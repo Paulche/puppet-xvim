@@ -6,9 +6,8 @@ class xvim {
     source => $xvim::config::repo,
     force  => true,
   }
-
   exec { 'xvim.build':
-    command   => "xcodebuild -scheme XVim\\ for\\ Xcode${xvim::config::xcode_major}",
+    command   => "xcodebuild -scheme ${xvim::config::schema}",
     cwd       => $xvim::config::tmpdir,
     provider  => shell,
     require   => Repository[$xvim::config::tmpdir],
